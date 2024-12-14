@@ -10,7 +10,6 @@ namespace Course_work
     {
         void AddPlayer(GameAccount player);
         GameAccount GetPlayerByName(string userName);
-       // GameAccount GetPlayerPassword(string userName);
         List<GameAccount> GetAllPlayers();
 
         void UpdatePlayerPassword(string oldUserPassword, string newUserPassword);

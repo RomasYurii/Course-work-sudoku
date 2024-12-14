@@ -36,7 +36,7 @@ namespace Course_work
             commandMenu.RegisterCommand(new LoginPlayerCommand(playerService));
 
             // Створюємо форму
-            Form1 form = new Form1(playerService);
+            Form1 form = new Form1(playerService, playerRepo);
 
             // Запускаємо окремий потік для читання з консолі
             Task.Run(() => ReadConsoleInput(form, commandMenu));

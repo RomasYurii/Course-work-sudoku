@@ -29,11 +29,11 @@ namespace Course_work
             CurrentRating = 10;
         }
 
-        //public virtual void WinGame(Game game)
-        //{
-        //    GameHistory.Add(game);
-        //    CurrentRating += game.CalculateRatingChange();
-        //}
+        public virtual void WinGame()
+        {
+            //GameHistory.Add(game);
+            CurrentRating += 10;
+        }
 
         //public virtual void LoseGame(Game game)
         //{
@@ -41,18 +41,18 @@ namespace Course_work
         //    CurrentRating -= game.CalculateRatingChange();
         //}
 
-        //public void GetStats()
-        //{
-        //    Console.WriteLine($"Player statistics for {UserName}:");
-        //    Console.WriteLine($"Current rating: {CurrentRating}");
-        //    Console.WriteLine("Game history:");
-        //    foreach (var game in GameHistory)
-        //    {
-        //        string result = game.IsWin ? "Win" : "Loss";
-        //        Console.WriteLine($" - Game ID: {game.GameId}, Opponent: {game.OpponentName}, Winner: {game.WinnerName}, Result: {result}, Rating change: {game.CalculateRatingChange()}");
-        //    }
-        //    Console.WriteLine();
-        //}
+        public void GetStats()
+        {
+            Console.WriteLine($"Player statistics for {UserName}:");
+            Console.WriteLine($"Current rating: {CurrentRating}");
+            Console.WriteLine("Game history:");
+            //foreach (var game in GameHistory)
+            //{
+            //    string result = game.IsWin ? "Win" : "Loss";
+            //    Console.WriteLine($" - Game ID: {game.GameId}, Opponent: {game.OpponentName}, Winner: {game.WinnerName}, Result: {result}, Rating change: {game.CalculateRatingChange()}");
+            //}
+            Console.WriteLine();
+        }
     }
 
     public class StandardAccount : GameAccount

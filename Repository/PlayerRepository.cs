@@ -9,24 +9,19 @@ namespace Course_work
     public class PlayerRepository : IPlayerRepository
     {
         private readonly DbContext _context;
-
         public PlayerRepository(DbContext context)
         {
             _context = context;
         }
-
         public void AddPlayer(GameAccount player)
         {
             _context.Players.Add(player);
 
         }
-
         public GameAccount GetPlayerByName(string userName)
         {
             return _context.Players.FirstOrDefault(p => p.UserName == userName);
         }
-
-
         public void UpdatePlayerPassword(string oldUserPassword, string newUserPassword)
         {
             var player = _context.Players.FirstOrDefault(p => p.UserPassword == oldUserPassword);
@@ -35,7 +30,23 @@ namespace Course_work
                 player.UserPassword = newUserPassword;
             }
         }
-
+        public void IncreaseRating(string userName)
+        {
+            var player = _context.Players.FirstOrDefault(p => p.UserName == userName);
+            if (player != null)
+            {
+                player.CurrentRating += 10;
+            }
+        }
+        public string GetRating(string userName)
+        {
+            var player = _context.Players.FirstOrDefault(p => p.UserName == userName);
+            if (player != null)
+            {
+                return player.CurrentRating.ToString();
+            }
+            return null;
+        }
         public void DeletePlayer(string userName)
         {
 
@@ -50,7 +61,6 @@ namespace Course_work
             }
 
         }
-
 
         public List<GameAccount> GetAllPlayers()
         {

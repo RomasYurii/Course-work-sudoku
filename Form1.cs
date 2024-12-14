@@ -6,15 +6,18 @@ namespace Course_work
     public partial class Form1 : Form
     {
         private readonly PlayerService _playerService;
+        private readonly PlayerRepository _playerRepository;
         const int n = 3;
         const int sizeButton = 50;
         public int[,] map = new int[n * n, n * n];
         public Button[,] buttons = new Button[n * n, n * n];
-        public Form1(PlayerService playerService)
+        public Form1(PlayerService playerService, PlayerRepository playerRepository)
         {
             InitializeComponent();
             _playerService = playerService;
+            _playerRepository = playerRepository;
             GenerateMap();
+            
         }
 
         public void GenerateMap()
@@ -262,6 +265,13 @@ namespace Course_work
                 }
             }
             MessageBox.Show("Вірно!");
+
+            _playerService.ShowAllPlayers();
+
+            _playerRepository.IncreaseRating(_playerService.GetLog());
+            Console.WriteLine(_playerService.GetLog());
+            Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
+
             //Console.WriteLine("111111");
             for (int i = 0; i < n * n; i++)
             {

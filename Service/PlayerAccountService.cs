@@ -16,7 +16,7 @@ namespace Course_work.Service
             _playerRepository = playerRepository;
         }
 
-        public bool IsLoggedIn;
+        public string IsLoggedIn;
 
         public void DisplayPlayerStats(string userName)
         {
@@ -59,12 +59,12 @@ namespace Course_work.Service
 
             if (player != null)
             {
-                if (!IsLoggedIn)
+                if (IsLoggedIn == null)
                 {
                     if (player.UserPassword == userPassword)
                     {
                         Console.WriteLine("Log In successfully!");
-                        IsLoggedIn = true;
+                        IsLoggedIn = player.UserName;
                     }
                 }
                 else
@@ -83,6 +83,10 @@ namespace Course_work.Service
             _playerRepository.DeletePlayer(userName);
         }
 
+        public string GetLog()
+        {
+            return IsLoggedIn;
+        }
         public void ShowAllPlayers()
         {
 
