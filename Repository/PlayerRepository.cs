@@ -54,7 +54,6 @@ namespace Course_work
             }
             return null;
         }
- 
         public void DeletePlayer(string userName)
         {
 
@@ -69,7 +68,6 @@ namespace Course_work
             }
 
         }
-
         public List<GameAccount> GetAllPlayers()
         {
             return _context.Players;
