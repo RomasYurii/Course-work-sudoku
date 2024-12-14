@@ -266,16 +266,23 @@ namespace Course_work
                     if (btnText != map[i, j].ToString())
                     {
                         MessageBox.Show("Невірно!");
-                        _gameRepository.AddGameHistory(_playerService.GetLog(), false);
+                        if (!string.IsNullOrWhiteSpace(_playerService.GetLog()))
+                        {
+                           // Console.WriteLine(string.IsNullOrWhiteSpace(_playerService.GetLog()));
+                            _gameRepository.AddGameHistory(_playerService.GetLog(), false);
+                        }
                         //_gameService.ShowHistoryStats(_playerService.GetLog());
                         return;
                     }
                 }
             }
             MessageBox.Show("Вірно!");
-           // _playerService.ShowAllPlayers();
-            _playerRepository.IncreaseRating(_playerService.GetLog());
-            _gameRepository.AddGameHistory(_playerService.GetLog(), true);
+            // _playerService.ShowAllPlayers();
+            if (!string.IsNullOrWhiteSpace(_playerService.GetLog()))
+            {
+                _playerRepository.IncreaseRating(_playerService.GetLog());
+                _gameRepository.AddGameHistory(_playerService.GetLog(), true);
+            }
             // Console.WriteLine(_playerService.GetLog());
             // Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
 

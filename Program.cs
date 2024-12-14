@@ -47,7 +47,7 @@ namespace Course_work
 
             // Запускаємо окремий потік для читання з консолі
             Task.Run(() => ReadConsoleInput(form, commandMenu));
-
+            
             // Запускаємо форму
             Application.Run(form);
         }
