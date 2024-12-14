@@ -11,6 +11,7 @@ namespace Course_work.Service
         void DisplayPlayerStats(string userName);
         void UpdatePlayerPassword(string oldUserPassword, string newUserPassword);
         void CreatePlayer(string userName, string userPassword, string accountType);
+        void LoginPlayer(string userName, string userPassword);
         void DeletePlayer(string userName);
         void ShowAllPlayers();
 

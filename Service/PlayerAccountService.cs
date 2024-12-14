@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Course_work.Service
 {
     public class PlayerService : IPlayerService
     {
         private readonly IPlayerRepository _playerRepository;
-
         public PlayerService(IPlayerRepository playerRepository)
         {
             _playerRepository = playerRepository;
         }
+
+        public string IsLoggedIn;
 
         public void DisplayPlayerStats(string userName)
         {
@@ -34,24 +37,46 @@ namespace Course_work.Service
                 Console.WriteLine($"Player with the name '{userName}' already exists.");
                 return;
             }
-
             GameAccount newPlayer;
-
-
-            switch (accountType)
-            {
-                case "standard":
-                    newPlayer = new StandardAccount(userName);
-                    break;
-                case "doubleRating":
-                    newPlayer = new DoubleRating(userName);
-                    break;
-                default:
-                    Console.WriteLine("Invalid account type.");
-                    return;
-            }
-
+            newPlayer = new StandardAccount(userName, userPassword, accountType);
+            //switch (accountType)
+            //{
+            //    case "standard":
+            //        newPlayer = new StandardAccount(userName, userPassword);
+            //        break;
+            //    case "doubleRating":
+            //        newPlayer = new DoubleRating(userName, userPassword);
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid account type.");
+            //        return;
+            //}
             _playerRepository.AddPlayer(newPlayer);
+        }
+
+        public void LoginPlayer(string userName, string userPassword)
+        {
+            var player = _playerRepository.GetPlayerByName(userName);
+
+            if (player != null)
+            {
+                if (IsLoggedIn == null)
+                {
+                    if (player.UserPassword == userPassword)
+                    {
+                        Console.WriteLine("Log In successfully!");
+                        IsLoggedIn = player.UserName;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You are already logged in!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Log In Failed!");   
+            }
         }
 
         public void DeletePlayer(string userName)
@@ -59,12 +84,15 @@ namespace Course_work.Service
             _playerRepository.DeletePlayer(userName);
         }
 
+        public string GetLog()
+        {
+            return IsLoggedIn;
+        }
         public void ShowAllPlayers()
         {
-
             foreach (var player in _playerRepository.GetAllPlayers())
             {
-                Console.WriteLine(player.UserName);
+                Console.WriteLine($"Player: {player.UserName}  |  AccountType: {player.AccountType}  |  Rating: {player.CurrentRating} ");
             }
         }
 

@@ -1,14 +1,29 @@
+
+using Course_work.Service;
+using Course_work.Game;
 namespace Course_work
 {
     public partial class Form1 : Form
     {
+        private readonly PlayerService _playerService;
+        private readonly PlayerRepository _playerRepository;
+
+        private readonly GameRepository _gameRepository;
+        private readonly GameService _gameService;
+
         const int n = 3;
         const int sizeButton = 50;
         public int[,] map = new int[n * n, n * n];
         public Button[,] buttons = new Button[n * n, n * n];
-        public Form1()
+        public Form1(PlayerService playerService, PlayerRepository playerRepository, GameRepository gameRepository, GameService gameService)
         {
             InitializeComponent();
+            _playerService = playerService;
+            _playerRepository = playerRepository;
+
+            _gameRepository = gameRepository;
+            _gameService = gameService;
+
             GenerateMap();
         }
 
@@ -39,7 +54,7 @@ namespace Course_work
 
         public void HideCells()
         {
-            int N = 10;
+            int N = 1;
             Random r = new Random();
             while (N > 0)
             {
@@ -229,18 +244,17 @@ namespace Course_work
 
         }
 
-        // Метод для оновлення текстового поля
-        public void UpdateConsoleOutput(string text)
-        {
-            if (textBoxConsoleOutput.InvokeRequired)
-            {
-                textBoxConsoleOutput.Invoke(new Action(() => textBoxConsoleOutput.AppendText(text + Environment.NewLine)));
-            }
-            else
-            {
-                textBoxConsoleOutput.AppendText(text + Environment.NewLine);
-            }
-        }
+        //public void UpdateConsoleOutput(string text)
+        //{
+        //    if (textBoxConsoleOutput.InvokeRequired)
+        //    {
+        //        textBoxConsoleOutput.Invoke(new Action(() => textBoxConsoleOutput.AppendText(text + Environment.NewLine)));
+        //    }
+        //    else
+        //    {
+        //        textBoxConsoleOutput.AppendText(text + Environment.NewLine);
+        //    }
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -252,11 +266,27 @@ namespace Course_work
                     if (btnText != map[i, j].ToString())
                     {
                         MessageBox.Show("Невірно!");
+                        if (!string.IsNullOrWhiteSpace(_playerService.GetLog()))
+                        {
+                           // Console.WriteLine(string.IsNullOrWhiteSpace(_playerService.GetLog()));
+                            _gameRepository.AddGameHistory(_playerService.GetLog(), false);
+                        }
+                        //_gameService.ShowHistoryStats(_playerService.GetLog());
                         return;
                     }
                 }
             }
             MessageBox.Show("Вірно!");
+            // _playerService.ShowAllPlayers();
+            if (!string.IsNullOrWhiteSpace(_playerService.GetLog()))
+            {
+                _playerRepository.IncreaseRating(_playerService.GetLog());
+                _gameRepository.AddGameHistory(_playerService.GetLog(), true);
+            }
+            // Console.WriteLine(_playerService.GetLog());
+            // Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
+
+            //Console.WriteLine("111111");
             for (int i = 0; i < n * n; i++)
             {
                 for (int j = 0; j < n * n; j++)
