@@ -27,7 +27,7 @@ namespace Course_work.Game
             Console.WriteLine($"\nGames history for {playerName}:");
             foreach (var game in games)
             {
-                Console.WriteLine($"Game ID: {Game.GameIndex} | Player: {game.PlayerName} | Win: {game.IsWin}");
+                Console.WriteLine($"Game ID: {game.GameIndex} | Player: {game.PlayerName} | Win: {game.IsWin}");
             }
         }
     }

@@ -11,31 +11,18 @@ namespace Course_work.Game
 
     public class Game
     {
-        public static int GameIndex = 1;
+        private static int GlobalGameIndex = 1;
+        public int GameIndex { get; private set; }
         public string PlayerName { get; set; }
         public bool IsWin { get; set; }
 
         private List<Game> gamesHistory;
         public Game(string playerName, bool isWin)
-    {
-
-        PlayerName = playerName;
-        GameIndex++;
-        IsWin = isWin;
-    }
-
-        public void AddGameHistory(string playerName, bool isWin)
         {
-            Game game = new Game(playerName, isWin);
-            gamesHistory.Add(game);
-        }
-        public void GeteHistoryStats()
-        {
-            Console.WriteLine($"\nІсторія ігор для {PlayerName}:");
-            foreach (var game in gamesHistory)
-            {
-                Console.WriteLine($"{Game.GameIndex} | {game.PlayerName} | {game.IsWin}");
-            }
+
+            PlayerName = playerName;
+            GameIndex = GlobalGameIndex++;
+            IsWin = isWin;
         }
     }
 }

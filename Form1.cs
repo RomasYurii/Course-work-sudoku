@@ -267,7 +267,7 @@ namespace Course_work
                     {
                         MessageBox.Show("Невірно!");
                         _gameRepository.AddGameHistory(_playerService.GetLog(), false);
-                        _gameService.ShowHistoryStats(_playerService.GetLog());
+                        //_gameService.ShowHistoryStats(_playerService.GetLog());
                         return;
                     }
                 }
@@ -275,8 +275,9 @@ namespace Course_work
             MessageBox.Show("Вірно!");
            // _playerService.ShowAllPlayers();
             _playerRepository.IncreaseRating(_playerService.GetLog());
-           // Console.WriteLine(_playerService.GetLog());
-           // Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
+            _gameRepository.AddGameHistory(_playerService.GetLog(), true);
+            // Console.WriteLine(_playerService.GetLog());
+            // Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
 
             //Console.WriteLine("111111");
             for (int i = 0; i < n * n; i++)
