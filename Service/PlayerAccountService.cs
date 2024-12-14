@@ -79,6 +79,19 @@ namespace Course_work.Service
             }
         }
 
+        public void LogoutPlayer()
+        {
+                if (IsLoggedIn == null)
+                {
+                    Console.WriteLine("You are not logged in!");
+                }
+                else
+                {
+                    IsLoggedIn = null;
+                    Console.WriteLine("Successfully logged out!");
+                }
+        }
+
         public void DeletePlayer(string userName)
         {
             _playerRepository.DeletePlayer(userName);
