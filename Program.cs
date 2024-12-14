@@ -34,6 +34,7 @@ namespace Course_work
 
             commandMenu.RegisterCommand(new AddPlayerCommand(playerService));
             commandMenu.RegisterCommand(new LoginPlayerCommand(playerService));
+            commandMenu.RegisterCommand(new ShowAllPlayers(playerService));
 
             // Створюємо форму
             Form1 form = new Form1(playerService, playerRepo);

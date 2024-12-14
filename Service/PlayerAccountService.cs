@@ -38,18 +38,19 @@ namespace Course_work.Service
                 return;
             }
             GameAccount newPlayer;
-            switch (accountType)
-            {
-                case "standard":
-                    newPlayer = new StandardAccount(userName, userPassword);
-                    break;
-                case "doubleRating":
-                    newPlayer = new DoubleRating(userName, userPassword);
-                    break;
-                default:
-                    Console.WriteLine("Invalid account type.");
-                    return;
-            }
+            newPlayer = new StandardAccount(userName, userPassword, accountType);
+            //switch (accountType)
+            //{
+            //    case "standard":
+            //        newPlayer = new StandardAccount(userName, userPassword);
+            //        break;
+            //    case "doubleRating":
+            //        newPlayer = new DoubleRating(userName, userPassword);
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid account type.");
+            //        return;
+            //}
             _playerRepository.AddPlayer(newPlayer);
         }
 
@@ -89,10 +90,9 @@ namespace Course_work.Service
         }
         public void ShowAllPlayers()
         {
-
             foreach (var player in _playerRepository.GetAllPlayers())
             {
-                Console.WriteLine(player.UserName);
+                Console.WriteLine($"Player: {player.UserName}  |  AccountType: {player.AccountType}  |  Rating: {player.CurrentRating} ");
             }
         }
 

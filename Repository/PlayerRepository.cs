@@ -35,7 +35,14 @@ namespace Course_work
             var player = _context.Players.FirstOrDefault(p => p.UserName == userName);
             if (player != null)
             {
-                player.CurrentRating += 10;
+                if (player.AccountType == "doubleRating")
+                {
+                    player.CurrentRating += 20;
+                }
+                else
+                {
+                    player.CurrentRating += 10;
+                }
             }
         }
         public string GetRating(string userName)

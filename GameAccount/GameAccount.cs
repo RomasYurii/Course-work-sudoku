@@ -11,6 +11,7 @@ namespace Course_work
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public static int Id = 0;
+        public string AccountType { get; set; }
 
         public int CurrentRating
         {
@@ -21,12 +22,13 @@ namespace Course_work
 
         //protected List<Game> GameHistory = new List<Game>();
 
-        protected GameAccount(string userName, string userPassword )
+        protected GameAccount(string userName, string userPassword,string accountType )
         {
             Id++;
             UserName = userName;
             UserPassword = userPassword;
             CurrentRating = 10;
+            AccountType = accountType;
         }
 
         public virtual void WinGame()
@@ -57,12 +59,12 @@ namespace Course_work
 
     public class StandardAccount : GameAccount
     {
-        public StandardAccount(string userName, string userPassword) : base(userName, userPassword) { }
+        public StandardAccount(string userName, string userPassword, string accountType) : base(userName, userPassword, accountType) { }
     }
 
-    public class DoubleRating : GameAccount
-    {
-        public DoubleRating(string userName, string userPassword) : base(userName, userPassword) { }
+   // public class DoubleRating : GameAccount
+    //{
+     //   public DoubleRating(string userName, string userPassword) : base(userName, userPassword) { }
 
         //public override void WinGame(Game game)
         //{
@@ -75,5 +77,5 @@ namespace Course_work
         //    CurrentRating -= game.CalculateRatingChange() * 2;
         //    GameHistory.Add(game);
         //}
-    }
+    //}
 }

@@ -237,7 +237,6 @@ namespace Course_work
 
         }
 
-        // Метод для оновлення текстового поля
         public void UpdateConsoleOutput(string text)
         {
             if (textBoxConsoleOutput.InvokeRequired)
@@ -265,12 +264,10 @@ namespace Course_work
                 }
             }
             MessageBox.Show("Вірно!");
-
-            _playerService.ShowAllPlayers();
-
+           // _playerService.ShowAllPlayers();
             _playerRepository.IncreaseRating(_playerService.GetLog());
-            Console.WriteLine(_playerService.GetLog());
-            Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
+          //  Console.WriteLine(_playerService.GetLog());
+          //  Console.WriteLine(_playerRepository.GetRating(_playerService.GetLog()));
 
             //Console.WriteLine("111111");
             for (int i = 0; i < n * n; i++)
@@ -280,7 +277,7 @@ namespace Course_work
                     this.Controls.Remove(buttons[i, j]);
                 }
             }
-           // GenerateMap();
+            GenerateMap();
         }
     }
 }
