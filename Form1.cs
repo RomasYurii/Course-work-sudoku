@@ -1,14 +1,19 @@
+
+using Course_work.Service;
+
 namespace Course_work
 {
     public partial class Form1 : Form
     {
+        private readonly PlayerService _playerService;
         const int n = 3;
         const int sizeButton = 50;
         public int[,] map = new int[n * n, n * n];
         public Button[,] buttons = new Button[n * n, n * n];
-        public Form1()
+        public Form1(PlayerService playerService)
         {
             InitializeComponent();
+            _playerService = playerService;
             GenerateMap();
         }
 
@@ -39,7 +44,7 @@ namespace Course_work
 
         public void HideCells()
         {
-            int N = 10;
+            int N = 1;
             Random r = new Random();
             while (N > 0)
             {
@@ -257,6 +262,7 @@ namespace Course_work
                 }
             }
             MessageBox.Show("Вірно!");
+            //Console.WriteLine("111111");
             for (int i = 0; i < n * n; i++)
             {
                 for (int j = 0; j < n * n; j++)
@@ -264,7 +270,7 @@ namespace Course_work
                     this.Controls.Remove(buttons[i, j]);
                 }
             }
-            GenerateMap();
+           // GenerateMap();
         }
     }
 }

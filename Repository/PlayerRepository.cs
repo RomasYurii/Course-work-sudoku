@@ -27,7 +27,6 @@ namespace Course_work
         }
 
 
-
         public void UpdatePlayerPassword(string oldUserPassword, string newUserPassword)
         {
             var player = _context.Players.FirstOrDefault(p => p.UserPassword == oldUserPassword);

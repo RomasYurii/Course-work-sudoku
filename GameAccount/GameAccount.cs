@@ -21,10 +21,11 @@ namespace Course_work
 
         //protected List<Game> GameHistory = new List<Game>();
 
-        protected GameAccount(string userName)
+        protected GameAccount(string userName, string userPassword )
         {
             Id++;
             UserName = userName;
+            UserPassword = userPassword;
             CurrentRating = 10;
         }
 
@@ -56,12 +57,12 @@ namespace Course_work
 
     public class StandardAccount : GameAccount
     {
-        public StandardAccount(string userName) : base(userName) { }
+        public StandardAccount(string userName, string userPassword) : base(userName, userPassword) { }
     }
 
     public class DoubleRating : GameAccount
     {
-        public DoubleRating(string userName) : base(userName) { }
+        public DoubleRating(string userName, string userPassword) : base(userName, userPassword) { }
 
         //public override void WinGame(Game game)
         //{
