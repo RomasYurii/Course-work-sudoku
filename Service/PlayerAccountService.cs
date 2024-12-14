@@ -39,18 +39,6 @@ namespace Course_work.Service
             }
             GameAccount newPlayer;
             newPlayer = new StandardAccount(userName, userPassword, accountType);
-            //switch (accountType)
-            //{
-            //    case "standard":
-            //        newPlayer = new StandardAccount(userName, userPassword);
-            //        break;
-            //    case "doubleRating":
-            //        newPlayer = new DoubleRating(userName, userPassword);
-            //        break;
-            //    default:
-            //        Console.WriteLine("Invalid account type.");
-            //        return;
-            //}
             _playerRepository.AddPlayer(newPlayer);
         }
 
@@ -92,9 +80,26 @@ namespace Course_work.Service
                 }
         }
 
-        public void DeletePlayer(string userName)
+        public void DeletePlayer(string userName, string userPassword)
         {
-            _playerRepository.DeletePlayer(userName);
+            var player = _playerRepository.GetPlayerByName(userName);
+            if (player != null)
+            {
+                if (player.UserPassword == userPassword)
+                {
+                    Console.WriteLine("Player deleted successfully");
+                    _playerRepository.DeletePlayer(userName);
+                }
+                else
+                {
+                    Console.WriteLine("You are already logged in!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Player doesn`t exist");
+            }
+
         }
 
         public string GetLog()

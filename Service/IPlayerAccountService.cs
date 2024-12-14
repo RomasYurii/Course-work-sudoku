@@ -13,7 +13,7 @@ namespace Course_work.Service
         void CreatePlayer(string userName, string userPassword, string accountType);
         void LoginPlayer(string userName, string userPassword);
         void LogoutPlayer();
-        void DeletePlayer(string userName);
+        void DeletePlayer(string userName, string userPassword);
         void ShowAllPlayers();
 
     }

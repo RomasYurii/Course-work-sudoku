@@ -41,6 +41,7 @@ namespace Course_work
             commandMenu.RegisterCommand(new ShowAllPlayers(playerService));
             commandMenu.RegisterCommand(new ShowAllGames(gameService));
             commandMenu.RegisterCommand(new LogoutPlayerCommand(playerService));
+            commandMenu.RegisterCommand(new DeletePlayerCommand(playerService));
 
 
             // Створюємо форму

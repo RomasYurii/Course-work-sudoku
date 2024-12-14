@@ -56,13 +56,11 @@ namespace Course_work
         }
         public void DeletePlayer(string userName)
         {
-
-
-            foreach (var game in _context.Players)
+            foreach (var user in _context.Players)
             {
-                if (game.UserName == userName)
+                if (user.UserName == userName)
                 {
-                    _context.Players.Remove(game);
+                    _context.Players.Remove(user);
                     break;
                 }
             }
