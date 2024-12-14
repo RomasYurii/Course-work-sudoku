@@ -37,12 +37,6 @@ namespace Course_work
             CurrentRating += 10;
         }
 
-        //public virtual void LoseGame(Game game)
-        //{
-        //    GameHistory.Add(game);
-        //    CurrentRating -= game.CalculateRatingChange();
-        //}
-
         public void GetStats()
         {
             Console.WriteLine($"Player statistics for {UserName}:");
@@ -69,12 +63,6 @@ namespace Course_work
         //public override void WinGame(Game game)
         //{
         //    CurrentRating += game.CalculateRatingChange() * 2;
-        //    GameHistory.Add(game);
-        //}
-
-        //public override void LoseGame(Game game)
-        //{
-        //    CurrentRating -= game.CalculateRatingChange() * 2;
         //    GameHistory.Add(game);
         //}
     //}

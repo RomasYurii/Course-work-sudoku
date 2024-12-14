@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Course_work.Communication
 {
-    internal class ShowPlayerInfoCommand
+    internal class ShowAllGames
     {
     }
 }

@@ -1,4 +1,5 @@
 using Course_work.Communication;
+using Course_work.Game;
 using Course_work.Service;
 using System;
 using System.IO;
@@ -32,12 +33,15 @@ namespace Course_work
             var playerService = new PlayerService(playerRepo);
             var commandMenu = new MenegmentCommand();
 
+            var gameRepo = new GameRepository();
+            var gameService = new GameService(gameRepo);    
+
             commandMenu.RegisterCommand(new AddPlayerCommand(playerService));
             commandMenu.RegisterCommand(new LoginPlayerCommand(playerService));
             commandMenu.RegisterCommand(new ShowAllPlayers(playerService));
 
             // Створюємо форму
-            Form1 form = new Form1(playerService, playerRepo);
+            Form1 form = new Form1(playerService, playerRepo, gameRepo, gameService);
 
             // Запускаємо окремий потік для читання з консолі
             Task.Run(() => ReadConsoleInput(form, commandMenu));
@@ -56,8 +60,8 @@ namespace Course_work
 
                 if (int.TryParse(Console.ReadLine(), out int commandNumber))
                 {
-                    string commandNumber2 = commandNumber.ToString();
-                    form?.UpdateConsoleOutput(commandNumber2);
+                    //string commandNumber2 = commandNumber.ToString();
+                    //form?.UpdateConsoleOutput(commandNumber2);
 
                     if (commandNumber == 0)
                     {

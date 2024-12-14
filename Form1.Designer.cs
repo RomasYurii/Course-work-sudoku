@@ -28,18 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxConsoleOutput = new TextBox();
             button2 = new Button();
             SuspendLayout();
-            // 
-            // textBoxConsoleOutput
-            // 
-            textBoxConsoleOutput.Location = new Point(626, 258);
-            textBoxConsoleOutput.Multiline = true;
-            textBoxConsoleOutput.Name = "textBoxConsoleOutput";
-            textBoxConsoleOutput.Size = new Size(144, 81);
-            textBoxConsoleOutput.TabIndex = 0;
-            textBoxConsoleOutput.TextChanged += textBox1_TextChanged;
             // 
             // button2
             // 
@@ -57,17 +47,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button2);
-            Controls.Add(textBoxConsoleOutput);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBoxConsoleOutput;
         private Button button2;
     }
 }
