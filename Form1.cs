@@ -209,7 +209,17 @@ namespace Course_work
                     button.Size = new Size(sizeButton, sizeButton);
                     button.Text = map[i, j].ToString();
                     button.Click += OnCellPressed;
-                    button.Location = new Point(j * sizeButton, i * sizeButton);
+
+                    
+                    button.Location = new Point(j * sizeButton + (j / n) * 3, i * sizeButton + (i / n) * 3);
+
+                    
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.FlatAppearance.BorderColor = Color.Black;
+
+                    
+                    //button.FlatAppearance.BorderSize = ((i % n == 0 || j % n == 0) ? 2 : 1);
+
                     this.Controls.Add(button);
                 }
             }

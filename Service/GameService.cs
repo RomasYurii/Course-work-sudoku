@@ -16,7 +16,6 @@ namespace Course_work.Game
 
         public void AddGame(string playerName, bool isWin)
         {
-            //var game = new Game( playerName, isWin);
             _gameRepository.AddGameHistory(playerName, isWin);
         }
 

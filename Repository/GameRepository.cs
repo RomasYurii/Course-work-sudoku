@@ -5,7 +5,6 @@ namespace Course_work.Game
 {
     public class GameRepository : IGameRepository
     {
-        //private List<GameHistory> _gamesHistory = new List<GameHistory>();
         private readonly DbContext _dbContext;
 
         public GameRepository(DbContext dbContext)

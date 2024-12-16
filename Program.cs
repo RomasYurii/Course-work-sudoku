@@ -12,14 +12,11 @@ namespace Course_work
     {
         [STAThread]
         static void Main()
-        {
-            // Ініціалізація додатку
+        { 
             ApplicationConfiguration.Initialize();
 
-            // Створюємо консоль
             AllocConsole();
 
-            // Налаштовуємо потоки для вводу/виводу в консоль
             StreamWriter standardOutput = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true };
             Console.SetOut(standardOutput);
             Console.SetError(standardOutput);
@@ -27,7 +24,6 @@ namespace Course_work
             StreamReader standardInput = new StreamReader(Console.OpenStandardInput());
             Console.SetIn(standardInput);
 
-            // Ініціалізація залежностей
             var dbContext = new DbContext();
             var playerRepo = new PlayerRepository(dbContext);
             var playerService = new PlayerService(playerRepo);
@@ -44,13 +40,10 @@ namespace Course_work
             commandMenu.RegisterCommand(new DeletePlayerCommand(playerService));
 
 
-            // Створюємо форму
             Form1 form = new Form1(playerService, playerRepo, gameRepo, gameService);
 
-            // Запускаємо окремий потік для читання з консолі
             Task.Run(() => ReadConsoleInput(form, commandMenu));
             
-            // Запускаємо форму
             Application.Run(form);
         }
 
