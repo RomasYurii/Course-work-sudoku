@@ -54,7 +54,7 @@ namespace Course_work
 
         public void HideCells()
         {
-            int N = 1;
+            int N = 40;
             Random r = new Random();
             while (N > 0)
             {

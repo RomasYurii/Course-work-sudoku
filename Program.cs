@@ -70,10 +70,13 @@ namespace Course_work
                     if (commandNumber == 0)
                     {
                         Console.WriteLine("Exiting...");
+                        Application.Exit();
                         return;
                     }
-
-                    commandMenu.ExecuteCommand(commandNumber);
+                    else
+                    {
+                        commandMenu.ExecuteCommand(commandNumber);
+                    }
                 }
                 else
                 {
