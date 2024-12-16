@@ -33,7 +33,7 @@ namespace Course_work
             var playerService = new PlayerService(playerRepo);
             var commandMenu = new MenegmentCommand();
 
-            var gameRepo = new GameRepository();
+            var gameRepo = new GameRepository(dbContext);
             var gameService = new GameService(gameRepo);    
 
             commandMenu.RegisterCommand(new AddPlayerCommand(playerService));

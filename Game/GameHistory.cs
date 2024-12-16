@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-namespace Course_work.Game
+namespace Course_work
 {
 
-    public class Game
+    public class GameHistory
     {
         private static int GlobalGameIndex = 1;
         public int GameIndex { get; private set; }
         public string PlayerName { get; set; }
         public bool IsWin { get; set; }
 
-        private List<Game> gamesHistory;
-        public Game(string playerName, bool isWin)
+        private List<GameHistory> gamesHistory;
+        public GameHistory(string playerName, bool isWin)
         {
 
             PlayerName = playerName;

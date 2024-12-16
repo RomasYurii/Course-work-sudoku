@@ -5,21 +5,27 @@ namespace Course_work.Game
 {
     public class GameRepository : IGameRepository
     {
-        private List<Game> _gamesHistory = new List<Game>();
+        //private List<GameHistory> _gamesHistory = new List<GameHistory>();
+        private readonly DbContext _dbContext;
+
+        public GameRepository(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public void AddGameHistory(string playerName, bool isWin)
         {
-            Game game = new Game(playerName, isWin);
-            _gamesHistory.Add(game);
+            GameHistory game = new GameHistory(playerName, isWin);
+            _dbContext.GamesHistory.Add(game);
         }
-        public List<Game> GetAll()
+        public List<GameHistory> GetAll()
         {
-            return _gamesHistory;
+            return _dbContext.GamesHistory;
         }
 
-        public List<Game> GetGamesByPlayer(string playerName)
+        public List<GameHistory> GetGamesByPlayer(string playerName)
         {
-            return _gamesHistory.Where(game => game.PlayerName == playerName).ToList();
+            return _dbContext.GamesHistory.Where(game => game.PlayerName == playerName).ToList();
         }
     }
 }

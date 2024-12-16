@@ -5,7 +5,7 @@ namespace Course_work.Game
     public interface IGameRepository
     {
         void AddGameHistory(string playerName, bool isWin);
-        List<Game> GetAll();
-        List<Game> GetGamesByPlayer(string playerName);
+        List<GameHistory> GetAll();
+        List<GameHistory> GetGamesByPlayer(string playerName);
     }
 }
